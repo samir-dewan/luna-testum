@@ -3,16 +3,36 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 1rem;
 }
 
 .ArticleGridCell {
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
   border-radius: 2rem;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-bottom: 2rem;
   padding: 1.4rem;
   width: 20rem;
+}
+
+.ArticleGridDescription {
+  height: 6rem;
+}
+
+.ArticleGridSubtitle {
+  display: flex;
+  margin: 0.5rem 0;
+}
+
+.ArticleGridTitle {
+  display: flex;
+  white-space: normal;
+  text-overflow: ellipsis;
+  margin: 0.5rem 0;
 }
 
 .ArticleGridCellImage {
@@ -33,8 +53,10 @@
   color: white;
   border: none;
   padding: 0.6rem;
+  margin-top: 0.6rem;
   border-radius: 1rem;
   font: inherit;
   cursor: pointer;
+  position: inherit;
   width: 100%;
 }

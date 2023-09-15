@@ -17,9 +17,12 @@ export function ArticleGrid({ articles, onSelectArticle }: IArticleGrid) {
             data-testid="ArticleGridCell"
           >
             <img className="ArticleGridCellImage" src={imageUrl} />
-            <h3>{title}</h3>
-            <h4>{subtitle}</h4>
+            <div className="ArticleGridDescription">
+              <h3 className="ArticleGridTitle">{title}</h3>
+              <h4 className="ArticleGridSubtitle">{subtitle}</h4>
+            </div>
             <button
+              className="ArticleGridButton"
               onClick={() => {
                 onSelectArticle(id);
               }}
