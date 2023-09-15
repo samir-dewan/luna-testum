@@ -1,8 +1,10 @@
-import { Category } from "../../types";
+import { Article, Category } from "../../types";
 import "./CategorySelector.css";
 
 interface ICategorySelector {
   categories: Category[];
+  articles: Article[];
+  filteredArticles: Article[];
   selectedCategoryId?: Category["id"];
   onSelectCategory: (categoryId: Category["id"]) => void;
 }
@@ -10,8 +12,10 @@ interface ICategorySelector {
 
 export function CategorySelector({
   categories,
+  articles,
+  filteredArticles,
   selectedCategoryId,
-  onSelectCategory,
+  onSelectCategory
 }: ICategorySelector) {
   
   // Sort categories by title
@@ -22,7 +26,10 @@ export function CategorySelector({
   return (
     <div className="CategorySelector" data-testid="CategorySelector">
       {sortedCategories.map(({ id, title, color }) => {
+
         const isSelected = selectedCategoryId === id;
+
+        const articleCount = articles.filter((article) => article.categories.includes(id)).length;
         return (
           <div
             key={id}
@@ -32,7 +39,7 @@ export function CategorySelector({
               onSelectCategory(id);
             }}
           >
-            {title}
+            {title} {articleCount}
           </div>
         );
       })}

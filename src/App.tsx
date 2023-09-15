@@ -7,6 +7,7 @@ import { useApp } from "./useApp";
 function App() {
   const {
     categories,
+    articles,
     selectedArticle,
     filteredArticles,
     selectedCategoryId,
@@ -20,6 +21,8 @@ function App() {
       <CategorySelector
         categories={categories}
         selectedCategoryId={selectedCategoryId}
+        articles={articles}
+        filteredArticles={filteredArticles}
         onSelectCategory={(id) => {
           setSelectedCategoryId(id);
         }}
