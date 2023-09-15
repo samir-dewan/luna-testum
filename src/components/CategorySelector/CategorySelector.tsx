@@ -36,7 +36,11 @@ export function CategorySelector({
             className="CategoryOption"
             style={{ backgroundColor: isSelected ? "white" : color }}
             onClick={() => {
-              onSelectCategory(id);
+              if (isSelected) {
+                onSelectCategory("");
+              } else {
+                onSelectCategory(id);
+              }
             }}
           >
             {title} {articleCount}
