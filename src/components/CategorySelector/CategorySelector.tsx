@@ -7,14 +7,21 @@ interface ICategorySelector {
   onSelectCategory: (categoryId: Category["id"]) => void;
 }
 
+
 export function CategorySelector({
   categories,
   selectedCategoryId,
   onSelectCategory,
 }: ICategorySelector) {
+  
+  // Sort categories by title
+  const sortedCategories = [...categories].sort((a, b) => {
+    return a.title.localeCompare(b.title);
+  });
+    
   return (
     <div className="CategorySelector" data-testid="CategorySelector">
-      {categories.map(({ id, title, color }) => {
+      {sortedCategories.map(({ id, title, color }) => {
         const isSelected = selectedCategoryId === id;
         return (
           <div
