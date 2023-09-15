@@ -28,6 +28,7 @@ export function useApp() {
 
   return {
     categories,
+    articles,
     selectedCategoryId,
     selectedArticle,
     filteredArticles,
