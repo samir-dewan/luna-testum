@@ -9,27 +9,26 @@ interface ICategorySelector {
   onSelectCategory: (categoryId: Category["id"]) => void;
 }
 
-
 export function CategorySelector({
   categories,
   articles,
   filteredArticles,
   selectedCategoryId,
-  onSelectCategory
+  onSelectCategory,
 }: ICategorySelector) {
-  
   // Sort categories by title
   const sortedCategories = [...categories].sort((a, b) => {
     return a.title.localeCompare(b.title);
   });
-    
+
   return (
     <div className="CategorySelector" data-testid="CategorySelector">
       {sortedCategories.map(({ id, title, color }) => {
-
         const isSelected = selectedCategoryId === id;
 
-        const articleCount = articles.filter((article) => article.categories.includes(id)).length;
+        const articleCount = articles.filter((article) =>
+          article.categories.includes(id)
+        ).length;
         return (
           <div
             key={id}
@@ -43,7 +42,8 @@ export function CategorySelector({
               }
             }}
           >
-            {title} {articleCount}
+            <span>{title}</span>
+            <span>{articleCount}</span>
           </div>
         );
       })}
