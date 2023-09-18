@@ -37,7 +37,10 @@
 
 .ArticleDisplay .ArticleContentList {
   margin-bottom: 1rem;
-  background-color: red;
+}
+
+.ArticleDisplay .ArticleContentList .ArticleContentListItem {
+  margin-bottom: 0.25rem;
 }
 
 .ArticleDisplay button {
