@@ -60,3 +60,47 @@
   position: inherit;
   width: 100%;
 }
+
+@media (max-width: 480px) {
+
+  .ArticleGridCell {
+    width: 100%;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.4rem;
+    height: 5rem;
+    padding: 0.5rem;
+  }
+
+  .ArticleGridCellImage {
+    max-height: 4rem;
+    max-width: 4rem;
+  }
+
+  .ArticleGridButton {
+    padding: 0.2rem;
+    margin-top: 0.6rem;
+    border-radius: 100%;
+    font: inherit;
+    cursor: pointer;
+    position: inherit;
+    max-width: 0.1rem;
+  }
+
+  .ArticleGridTitle {
+    line-height: 1.25rem;
+    font-size: medium;
+    padding-top: 0.75rem;
+    margin: 0.1rem 0;
+  }
+
+  .ArticleGridSubtitle {
+    margin: 0.1rem 0;
+  }
+
+  .ArticleGridDescription {
+    width: 100%;
+  }
+}

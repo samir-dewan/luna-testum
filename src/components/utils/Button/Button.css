@@ -1,12 +1,23 @@
 .DefaultButton {
-    background: #e68e86;
-    color: white;
-    border: none;
-    padding: 0.6rem;
+  background: #e68e86;
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  margin-top: 0.6rem;
+  border-radius: 1rem;
+  font: inherit;
+  cursor: pointer;
+  position: inherit;
+  width: 100%;
+}
+@media (max-width: 480px) {
+  .DefaultButton {
+    padding: 0.2rem;
     margin-top: 0.6rem;
-    border-radius: 1rem;
-    font: inherit;
-    cursor: pointer;
-    position: inherit;
-    width: 100%;
+    border-radius: 50%;
+    max-width: 5rem;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+  }
 }
