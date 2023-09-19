@@ -1,0 +1,12 @@
+.DefaultButton {
+    background: #e68e86;
+    color: white;
+    border: none;
+    padding: 0.6rem;
+    margin-top: 0.6rem;
+    border-radius: 1rem;
+    font: inherit;
+    cursor: pointer;
+    position: inherit;
+    width: 100%;
+}

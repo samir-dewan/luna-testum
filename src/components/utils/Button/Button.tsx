@@ -11,7 +11,7 @@ export default function Button({text, onClick, uppercase}: ButtonProps) {
         <button
         className="DefaultButton"
         onClick={onClick}>
-            {uppercase ? text : text}
+            {uppercase ? text.toUpperCase() : text}
         </button>
     )
 }
