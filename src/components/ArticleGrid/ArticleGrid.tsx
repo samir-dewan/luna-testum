@@ -1,5 +1,6 @@
 import { Article } from "../../types";
 import "./ArticleGrid.css";
+import Button from "../utils/Button/Button";
 
 interface IArticleGrid {
   articles: Article[];
@@ -21,14 +22,7 @@ export function ArticleGrid({ articles, onSelectArticle }: IArticleGrid) {
               <h3 className="ArticleGridTitle">{title}</h3>
               <h4 className="ArticleGridSubtitle">{subtitle}</h4>
             </div>
-            <button
-              className="ArticleGridButton"
-              onClick={() => {
-                onSelectArticle(id);
-              }}
-            >
-              View
-            </button>
+            <Button text="view" onClick={() => onSelectArticle(id)} uppercase={true} />
           </div>
         );
       })}
