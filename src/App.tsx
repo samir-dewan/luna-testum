@@ -17,16 +17,17 @@ function App() {
 
   return (
     <div className="App" data-testid="App">
-      <Hero />
-      <CategorySelector
-        categories={categories}
-        selectedCategoryId={selectedCategoryId}
-        articles={articles}
-        filteredArticles={filteredArticles}
-        onSelectCategory={(id) => {
-          setSelectedCategoryId(id);
-        }}
-      />
+      <header>
+        <Hero />
+      </header>
+        <CategorySelector
+          categories={categories}
+          selectedCategoryId={selectedCategoryId}
+          articles={articles}
+          onSelectCategory={(id) => {
+            setSelectedCategoryId(id);
+          }}
+        />
       <ArticleGrid
         articles={filteredArticles}
         onSelectArticle={(id) => {
