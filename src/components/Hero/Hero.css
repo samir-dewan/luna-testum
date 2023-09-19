@@ -49,3 +49,24 @@
   font-weight: 500;
   line-height: normal;
 }
+
+@media (max-width: 480px) {
+  .Hero {
+    height: 300px;
+  }
+
+  .Hero h1 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+
+  .Hero .LogoContainer {
+    display: block;
+    margin: 0 auto;
+    left: auto;
+  }
+
+  .Hero .HeroContent {
+    padding: 1rem;
+  }
+}
