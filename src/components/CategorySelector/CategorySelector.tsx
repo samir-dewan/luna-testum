@@ -4,7 +4,6 @@ import "./CategorySelector.css";
 interface ICategorySelector {
   categories: Category[];
   articles: Article[];
-  filteredArticles: Article[];
   selectedCategoryId?: Category["id"];
   onSelectCategory: (categoryId: Category["id"]) => void;
 }
@@ -12,7 +11,6 @@ interface ICategorySelector {
 export function CategorySelector({
   categories,
   articles,
-  filteredArticles,
   selectedCategoryId,
   onSelectCategory,
 }: ICategorySelector) {
@@ -22,31 +20,33 @@ export function CategorySelector({
   });
 
   return (
-    <div className="CategorySelector" data-testid="CategorySelector">
-      {sortedCategories.map(({ id, title, color }) => {
-        const isSelected = selectedCategoryId === id;
+    <section>
+      <div className="CategorySelector" data-testid="CategorySelector">
+        {sortedCategories.map(({ id, title, color }) => {
+          const isSelected = selectedCategoryId === id;
 
-        const articleCount = articles.filter((article) =>
-          article.categories.includes(id)
-        ).length;
-        return (
-          <div
-            key={id}
-            className="CategoryOption"
-            style={{ backgroundColor: isSelected ? "white" : color }}
-            onClick={() => {
-              if (isSelected) {
-                onSelectCategory("");
-              } else {
-                onSelectCategory(id);
-              }
-            }}
-          >
-            <span>{title}</span>
-            <span>{articleCount}</span>
-          </div>
-        );
-      })}
-    </div>
+          const articleCount = articles.filter((article) =>
+            article.categories.includes(id)
+          ).length;
+          return (
+            <button
+              key={id}
+              className="CategoryOption"
+              style={{ backgroundColor: isSelected ? "white" : color }}
+              onClick={() => {
+                if (isSelected) {
+                  onSelectCategory("");
+                } else {
+                  onSelectCategory(id);
+                }
+              }}
+            >
+              <span>{title}</span>
+              <span>{articleCount}</span>
+            </button>
+          );
+        })}
+      </div>
+    </section>
   );
 }

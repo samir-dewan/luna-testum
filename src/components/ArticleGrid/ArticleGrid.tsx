@@ -17,7 +17,7 @@ export function ArticleGrid({ articles, onSelectArticle }: IArticleGrid) {
             className="ArticleGridCell"
             data-testid="ArticleGridCell"
           >
-            <img className="ArticleGridCellImage" src={imageUrl} />
+            <img className="ArticleGridCellImage" src={imageUrl} alt={`An image giving a visual representation of the article ${title}`} />
             <div className="ArticleGridDescription">
               <h3 className="ArticleGridTitle">{title}</h3>
               <h4 className="ArticleGridSubtitle">{subtitle}</h4>
