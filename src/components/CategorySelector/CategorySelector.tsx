@@ -1,4 +1,5 @@
 import { Article, Category } from "../../types";
+import SearchBar from "../SearchBar/SearchBar";
 import "./CategorySelector.css";
 
 interface ICategorySelector {
@@ -6,6 +7,7 @@ interface ICategorySelector {
   articles: Article[];
   selectedCategoryId?: Category["id"];
   onSelectCategory: (categoryId: Category["id"]) => void;
+  onSearchArticle: (articleTitle: Article["title"]) => void;
 }
 
 export function CategorySelector({
@@ -13,14 +15,22 @@ export function CategorySelector({
   articles,
   selectedCategoryId,
   onSelectCategory,
+  onSearchArticle
 }: ICategorySelector) {
   // Sort categories by title
   const sortedCategories = [...categories].sort((a, b) => {
     return a.title.localeCompare(b.title);
   });
 
+  const handleSearch = (query: string) => {
+      onSearchArticle(query)
+    }
+
   return (
     <section>
+      <div className="SearchBarContainer" data-testid="SearchBarContainer">
+        <SearchBar onSearch={handleSearch}/>
+      </div>
       <div className="CategorySelector" data-testid="CategorySelector">
         {sortedCategories.map(({ id, title, color }) => {
           const isSelected = selectedCategoryId === id;

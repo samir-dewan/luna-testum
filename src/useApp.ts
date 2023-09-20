@@ -13,18 +13,29 @@ export function useApp() {
     string | undefined
   >();
 
+  const [searchedArticles, setSearchedArticles] = useState<
+    string | undefined
+  >();
+
   const selectedArticle = useMemo(() => {
     return articles.find(({ id }) => id === selectedArticleId);
   }, [articles, selectedArticleId]);
 
   const filteredArticles = useMemo(() => {
+    let filterArticles = articles;
     if (selectedCategoryId) {
-      return articles.filter(({ categories }) =>
+      filterArticles = filterArticles.filter(({ categories }) =>
         categories.includes(selectedCategoryId)
       );
     }
-    return articles;
-  }, [articles, selectedCategoryId]);
+    if (searchedArticles) {
+      filterArticles = filterArticles.filter(({ title }) =>
+        title.includes(searchedArticles)
+      );
+    }
+    console.log(filterArticles);
+    return filterArticles;
+  }, [articles, selectedCategoryId, searchedArticles]);
 
   return {
     categories,
@@ -32,6 +43,7 @@ export function useApp() {
     selectedCategoryId,
     selectedArticle,
     filteredArticles,
+    setSearchedArticles,
     setSelectedCategoryId,
     setSelectedArticleId,
   };
