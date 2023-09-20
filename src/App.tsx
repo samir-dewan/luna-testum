@@ -13,6 +13,7 @@ function App() {
     selectedCategoryId,
     setSelectedCategoryId,
     setSelectedArticleId,
+    setSearchedArticles,
   } = useApp();
 
   return (
@@ -26,6 +27,9 @@ function App() {
           articles={articles}
           onSelectCategory={(id) => {
             setSelectedCategoryId(id);
+          }}
+          onSearchArticle={(title) => {
+            setSearchedArticles(title);
           }}
         />
       <ArticleGrid
