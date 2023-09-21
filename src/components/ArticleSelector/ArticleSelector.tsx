@@ -16,7 +16,7 @@ export function ArticleSelector({
   articles,
   selectedCategoryIds,
   onSelectCategory,
-  onSearchArticle
+  onSearchArticle,
 }: IArticleSelector) {
   // Sort categories by title
   const sortedCategories = [...categories].sort((a, b) => {
@@ -24,31 +24,37 @@ export function ArticleSelector({
   });
 
   const handleSearch = (query: string) => {
-      onSearchArticle(query)
-    }
+    onSearchArticle(query);
+  };
 
   return (
     <section>
       <div className="SearchBarContainer" data-testid="SearchBarContainer">
-        <SearchBar onSearch={handleSearch}/>
+        <SearchBar onSearch={handleSearch} />
       </div>
       <div className="CategorySelector" data-testid="CategorySelector">
         {sortedCategories.map(({ id, title, color }) => {
           const isSelected = selectedCategoryIds?.includes(id);
-          const articleCount = isSelected ? <TickCircle /> : articles.filter((article) =>
-            article.categories.includes(id)
-          ).length;
+          const articleCount = isSelected ? (
+            <TickCircle />
+          ) : (
+            articles.filter((article) => article.categories.includes(id)).length
+          );
           return (
             <button
               key={id}
               className="CategoryOption"
-              style={{ backgroundColor: isSelected ? "white" : color,
-              order: isSelected ? 1: 2 }}
+              style={{
+                backgroundColor: isSelected ? "white" : color,
+                order: isSelected ? 1 : 2,
+              }}
               onClick={() => {
-                  onSelectCategory(id);
+                onSelectCategory(id);
               }}
             >
-              <span>{title} {articleCount}</span>
+              <span>
+                {title} {articleCount}
+              </span>
             </button>
           );
         })}
