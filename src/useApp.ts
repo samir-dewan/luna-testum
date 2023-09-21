@@ -21,23 +21,18 @@ export function useApp() {
 
   const filteredArticles = useMemo(() => {
     let filtered = [...articles];
-    console.log('filtered pre filter is', filtered);
 
     if (selectedCategoryIds.length == 0 && selectedCategoryIds) {
       return filtered;
     }
 
     if (selectedCategoryIds.length > 0) {
-      console.log('selectedcategoriesid is ', selectedCategoryIds);
       filtered = filtered.filter((article) => {
-        console.log('article categories is ', article.categories)
         return article.categories.some((id) => {
-          console.log('some id is', id);
           return selectedCategoryIds.includes(id);
         });
       });
-      console.log('filtered is', filtered);
-    };
+    }
 
     if (searchedArticles) {
       filtered = filtered.filter(({ title }) =>
