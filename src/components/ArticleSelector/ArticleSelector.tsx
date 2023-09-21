@@ -1,22 +1,22 @@
 import { Article, Category } from "../../types";
 import SearchBar from "../SearchBar/SearchBar";
-import "./CategorySelector.css";
+import "./ArticleSelector.css";
 
-interface ICategorySelector {
+interface IArticleSelector {
   categories: Category[];
   articles: Article[];
-  selectedCategoryId?: Category["id"];
+  selectedCategoryIds?: Category["id"][];
   onSelectCategory: (categoryId: Category["id"]) => void;
   onSearchArticle: (articleTitle: Article["title"]) => void;
 }
 
-export function CategorySelector({
+export function ArticleSelector({
   categories,
   articles,
-  selectedCategoryId,
+  selectedCategoryIds,
   onSelectCategory,
   onSearchArticle
-}: ICategorySelector) {
+}: IArticleSelector) {
   // Sort categories by title
   const sortedCategories = [...categories].sort((a, b) => {
     return a.title.localeCompare(b.title);
@@ -33,7 +33,7 @@ export function CategorySelector({
       </div>
       <div className="CategorySelector" data-testid="CategorySelector">
         {sortedCategories.map(({ id, title, color }) => {
-          const isSelected = selectedCategoryId === id;
+          const isSelected = selectedCategoryIds?.includes(id);
 
           const articleCount = articles.filter((article) =>
             article.categories.includes(id)
@@ -44,15 +44,10 @@ export function CategorySelector({
               className="CategoryOption"
               style={{ backgroundColor: isSelected ? "white" : color }}
               onClick={() => {
-                if (isSelected) {
-                  onSelectCategory(""); //deselects a category
-                } else {
                   onSelectCategory(id);
-                }
               }}
             >
-              <span>{title} </span>
-              <span>{articleCount}</span>
+              <span>{title} {articleCount}</span>
             </button>
           );
         })}
