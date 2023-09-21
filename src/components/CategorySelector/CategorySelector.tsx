@@ -45,13 +45,13 @@ export function CategorySelector({
               style={{ backgroundColor: isSelected ? "white" : color }}
               onClick={() => {
                 if (isSelected) {
-                  onSelectCategory("");
+                  onSelectCategory(""); //deselects a category
                 } else {
                   onSelectCategory(id);
                 }
               }}
             >
-              <span>{title}</span>
+              <span>{title} </span>
               <span>{articleCount}</span>
             </button>
           );

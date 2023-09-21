@@ -61,7 +61,7 @@
   width: 100%;
 }
 
-@media (max-width: 810px) {
+@media (max-width: 810px) { /*tablet breakpoint*/
   .ArticleGridCell {
     width: 15rem;
     margin: 1rem 0.5rem;
@@ -72,7 +72,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px) { /*mobile breakpoint*/
 
   .ArticleGridCell {
     width: 100%;
