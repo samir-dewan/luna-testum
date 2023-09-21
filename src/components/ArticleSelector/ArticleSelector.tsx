@@ -1,5 +1,6 @@
 import { Article, Category } from "../../types";
 import SearchBar from "../SearchBar/SearchBar";
+import { TickCircle } from "@iconsans/react/bold";
 import "./ArticleSelector.css";
 
 interface IArticleSelector {
@@ -34,15 +35,15 @@ export function ArticleSelector({
       <div className="CategorySelector" data-testid="CategorySelector">
         {sortedCategories.map(({ id, title, color }) => {
           const isSelected = selectedCategoryIds?.includes(id);
-
-          const articleCount = articles.filter((article) =>
+          const articleCount = isSelected ? <TickCircle /> : articles.filter((article) =>
             article.categories.includes(id)
           ).length;
           return (
             <button
               key={id}
               className="CategoryOption"
-              style={{ backgroundColor: isSelected ? "white" : color }}
+              style={{ backgroundColor: isSelected ? "white" : color,
+              order: isSelected ? 1: 2 }}
               onClick={() => {
                   onSelectCategory(id);
               }}

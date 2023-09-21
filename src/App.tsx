@@ -27,7 +27,7 @@ function App() {
         articles={articles}
         onSelectCategory={(id) => {
           setSelectedCategoryIds((prevSelectedCategoryIds) => {
-            // Check if the selected category is already in the array, and add it if not
+            // Check if the selected category is already in the array, remove it if it is, add it if not
             if (!prevSelectedCategoryIds.includes(id)) {
               return [...prevSelectedCategoryIds, id];
             } else {
