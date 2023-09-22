@@ -22,6 +22,12 @@ export function useApp() {
   const filteredArticles = useMemo(() => {
     let filtered = [...articles];
 
+    if (searchedArticles) {
+      filtered = filtered.filter((article) =>
+        article.title.includes(searchedArticles)
+      );
+    }
+
     if (selectedCategoryIds.length == 0 && selectedCategoryIds) {
       return filtered;
     }
@@ -32,12 +38,6 @@ export function useApp() {
           return selectedCategoryIds.includes(id);
         });
       });
-    }
-
-    if (searchedArticles) {
-      filtered = filtered.filter(({ title }) =>
-        title.includes(searchedArticles)
-      );
     }
     return filtered;
   }, [articles, selectedCategoryIds, searchedArticles]);
