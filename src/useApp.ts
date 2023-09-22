@@ -24,7 +24,8 @@ export function useApp() {
 
     if (searchedArticles) {
       filtered = filtered.filter((article) =>
-        article.title.includes(searchedArticles)
+        article.title.includes(searchedArticles) ||
+        article.subtitle.includes(searchedArticles)
       );
     }
 
