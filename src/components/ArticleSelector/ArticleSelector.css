@@ -1,0 +1,25 @@
+.CategorySelector {
+  display: flex;
+  justify-content: center;
+  align-content: space-around;
+  flex-wrap: wrap;
+  column-gap: 1.5rem;
+  padding: 1rem 2rem;
+}
+
+.CategoryOption {
+  background-color: white;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  border: none;
+}
+
+@media (max-width: 480px) {
+  .CategorySelector {
+    display: block;
+    overflow-y: auto;
+  }
+}

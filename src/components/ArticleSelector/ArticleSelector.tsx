@@ -1,58 +1,60 @@
 import { Article, Category } from "../../types";
 import SearchBar from "../SearchBar/SearchBar";
-import "./CategorySelector.css";
+import { TickCircle } from "@iconsans/react/bold";
+import "./ArticleSelector.css";
 
-interface ICategorySelector {
+interface IArticleSelector {
   categories: Category[];
   articles: Article[];
-  selectedCategoryId?: Category["id"];
+  selectedCategoryIds?: Category["id"][];
   onSelectCategory: (categoryId: Category["id"]) => void;
   onSearchArticle: (articleTitle: Article["title"]) => void;
 }
 
-export function CategorySelector({
+export function ArticleSelector({
   categories,
   articles,
-  selectedCategoryId,
+  selectedCategoryIds,
   onSelectCategory,
-  onSearchArticle
-}: ICategorySelector) {
+  onSearchArticle,
+}: IArticleSelector) {
   // Sort categories by title
   const sortedCategories = [...categories].sort((a, b) => {
     return a.title.localeCompare(b.title);
   });
 
   const handleSearch = (query: string) => {
-      onSearchArticle(query)
-    }
+    onSearchArticle(query);
+  };
 
   return (
     <section>
       <div className="SearchBarContainer" data-testid="SearchBarContainer">
-        <SearchBar onSearch={handleSearch}/>
+        <SearchBar onSearch={handleSearch} />
       </div>
       <div className="CategorySelector" data-testid="CategorySelector">
         {sortedCategories.map(({ id, title, color }) => {
-          const isSelected = selectedCategoryId === id;
-
-          const articleCount = articles.filter((article) =>
-            article.categories.includes(id)
-          ).length;
+          const isSelected = selectedCategoryIds?.includes(id);
+          const articleCount = isSelected ? (
+            <TickCircle />
+          ) : (
+            articles.filter((article) => article.categories.includes(id)).length
+          );
           return (
             <button
               key={id}
               className="CategoryOption"
-              style={{ backgroundColor: isSelected ? "white" : color }}
+              style={{
+                backgroundColor: isSelected ? "white" : color,
+                order: isSelected ? 1 : 2,
+              }}
               onClick={() => {
-                if (isSelected) {
-                  onSelectCategory(""); //deselects a category
-                } else {
-                  onSelectCategory(id);
-                }
+                onSelectCategory(id);
               }}
             >
-              <span>{title} </span>
-              <span>{articleCount}</span>
+              <span>
+                {title} {articleCount}
+              </span>
             </button>
           );
         })}

@@ -5,9 +5,7 @@ import { useData } from "./hooks/useData";
 export function useApp() {
   const { categories, articles } = useData();
 
-  const [selectedCategoryId, setSelectedCategoryId] = useState<
-    string | undefined
-  >();
+  const [selectedCategoryIds, setSelectedCategoryIds] = useState<string[]>([]);
 
   const [selectedArticleId, setSelectedArticleId] = useState<
     string | undefined
@@ -22,29 +20,36 @@ export function useApp() {
   }, [articles, selectedArticleId]);
 
   const filteredArticles = useMemo(() => {
-    let filterArticles = articles;
-    if (selectedCategoryId) {
-      filterArticles = filterArticles.filter(({ categories }) =>
-        categories.includes(selectedCategoryId)
-      );
+    let filtered = [...articles];
+
+    if (selectedCategoryIds.length == 0 && selectedCategoryIds) {
+      return filtered;
     }
+
+    if (selectedCategoryIds.length > 0) {
+      filtered = filtered.filter((article) => {
+        return article.categories.some((id) => {
+          return selectedCategoryIds.includes(id);
+        });
+      });
+    }
+
     if (searchedArticles) {
-      filterArticles = filterArticles.filter(({ title }) =>
+      filtered = filtered.filter(({ title }) =>
         title.includes(searchedArticles)
       );
     }
-    console.log(filterArticles);
-    return filterArticles;
-  }, [articles, selectedCategoryId, searchedArticles]);
+    return filtered;
+  }, [articles, selectedCategoryIds, searchedArticles]);
 
   return {
     categories,
     articles,
-    selectedCategoryId,
+    selectedCategoryIds,
     selectedArticle,
     filteredArticles,
     setSearchedArticles,
-    setSelectedCategoryId,
+    setSelectedCategoryIds,
     setSelectedArticleId,
   };
 }
