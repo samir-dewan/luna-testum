@@ -1,6 +1,7 @@
 import { Article, Category } from "../../types";
 import SearchBar from "../SearchBar/SearchBar";
 import "./ArticleSelector.css";
+import darkenColour from "../helper/darkenColour";
 
 interface IArticleSelector {
   categories: Category[];
@@ -41,7 +42,7 @@ export function ArticleSelector({
             >
               <path
                 d="M7.29417 12.9577L10.5048 16.1681L17.6729 9"
-                stroke="#000000"
+                stroke="#ffffff"
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -50,7 +51,7 @@ export function ArticleSelector({
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#000000"
+                stroke="#ffffff"
                 strokeWidth="2"
               />
             </svg>
@@ -62,8 +63,8 @@ export function ArticleSelector({
               key={id}
               className="CategoryOption"
               style={{
-                backgroundColor: isSelected ? "white" : color,
-                order: isSelected ? 1 : 2,
+                color: isSelected ? "white" : "black",
+                backgroundColor: isSelected ? darkenColour(color) : color,
               }}
               onClick={() => {
                 onSelectCategory(id);
