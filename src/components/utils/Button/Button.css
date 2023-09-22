@@ -1,5 +1,5 @@
 .DefaultButton {
-  background: #e68e86;
+  background-color: #e68e86;
   color: white;
   border: none;
   padding: 0.6rem;
@@ -9,6 +9,11 @@
   cursor: pointer;
   position: inherit;
   width: 100%;
+  transition: background-color 0.2s;
+}
+
+.DefaultButton:hover {
+  background-color: #ad6f6afb;
 }
 @media (max-width: 480px) {
   .DefaultButton {
@@ -17,7 +22,5 @@
     border-radius: 50%;
     max-width: 5rem;
     height: 100%;
-    display: block;
-    margin: 0 auto;
   }
 }

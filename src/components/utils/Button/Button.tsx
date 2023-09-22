@@ -11,7 +11,7 @@ export default function Button({text, onClick, uppercase, additionalClass}: Butt
 
     return (
         <button
-        className={additionalClass ? `${additionalClass} DefaultButton` : "DefaultButton"}
+        className={additionalClass ? `DefaultButton ${additionalClass} ` : "DefaultButton"}
         onClick={onClick}>
             {uppercase ? text.toUpperCase() : text}
         </button>

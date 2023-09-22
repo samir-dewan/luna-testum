@@ -23,6 +23,11 @@
   flex-shrink: 0;
   cursor: pointer;
   border: none;
+  transition: padding 0.5s;
+}
+
+.CategoryOption:hover {
+  padding: 1rem 1.5rem;
 }
 
 @media (max-width: 480px) {

@@ -6,13 +6,14 @@
 }
 
 .SearchBarForm {
+    padding: 0 1rem;
     display: flex;
     justify-content: center;
     gap: 0.5rem;
 }
 
 .SearchBarButton {
-    background: #e68e86;
+    background-color: #e68e86;
     color: white;
     border: none;
     padding: 0.2rem;
@@ -21,4 +22,9 @@
     font-size: 1rem;
     cursor: pointer;
     position: inherit;
+    transition: background-color 0.5s
+}
+
+.SearchBarButton:hover {
+    background-color: #ad6f6afb;
 }
