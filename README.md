@@ -151,10 +151,9 @@ POST-ATTEMPT: I made the Search function to live update depending on the text, a
 As our newest team member, seeing the (albeit rudimentary) **luna** web app with fresh eyes for the first time is a moment that we like to capitalise on! Can you comment on the UX of our web app, and implement some changes that you think would **delight and surprise** our users.
 
 ```
-I've added a set of animations to the CTA buttons, Article sections and Category filters. On clicking Category filters also, rather than them going white, I've made them go to a darker colour than they were for some colour consistency. Hopefully the app looks good enough to delight and surprise our users now!
-
-```
 
 The first thing I'm going to do is work on all the actions that I've written up on every task so far. Normally, I would prioritise these in some kind of KANBAN board, but I'm fairly confident I can do all of them (barring Task 3.1). As well as that, adding some responsive design via colour based animation will be the first thing I'll be looking at doing!
+
+POST-ATTEMPT: I've added a set of animations to the CTA buttons, Article sections and Category filters. On clicking Category filters also, rather than them going white, I've made them go to a darker colour than they were for some colour consistency. Hopefully the app looks good enough to delight and surprise our users now!
 
 ```
