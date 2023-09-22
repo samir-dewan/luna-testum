@@ -1,0 +1,30 @@
+.SearchBarInput {
+    width: 85%;
+    border-radius: 2rem;
+    padding: 0 0.5rem;
+    border: none;
+}
+
+.SearchBarForm {
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.SearchBarButton {
+    background-color: #e68e86;
+    color: white;
+    border: none;
+    padding: 0.2rem;
+    border-radius: 1rem;
+    font: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    position: inherit;
+    transition: background-color 0.5s
+}
+
+.SearchBarButton:hover {
+    background-color: #ad6f6afb;
+}

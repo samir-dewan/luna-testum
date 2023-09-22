@@ -1,5 +1,5 @@
 import { Hero } from "./components/Hero/Hero";
-import { CategorySelector } from "./components/CategorySelector/CategorySelector";
+import { ArticleSelector } from "./components/ArticleSelector/ArticleSelector";
 import { ArticleGrid } from "./components/ArticleGrid/ArticleGrid";
 import { ArticleDisplay } from "./components/ArticleDisplay/ArticleDisplay";
 import { useApp } from "./useApp";
@@ -7,21 +7,38 @@ import { useApp } from "./useApp";
 function App() {
   const {
     categories,
+    articles,
     selectedArticle,
     filteredArticles,
-    selectedCategoryId,
-    setSelectedCategoryId,
+    selectedCategoryIds,
+    setSelectedCategoryIds,
     setSelectedArticleId,
+    setSearchedArticles,
   } = useApp();
 
   return (
     <div className="App" data-testid="App">
-      <Hero />
-      <CategorySelector
+      <header>
+        <Hero />
+      </header>
+      <ArticleSelector
         categories={categories}
-        selectedCategoryId={selectedCategoryId}
+        selectedCategoryIds={selectedCategoryIds}
+        articles={articles}
         onSelectCategory={(id) => {
-          setSelectedCategoryId(id);
+          setSelectedCategoryIds((prevSelectedCategoryIds) => {
+            // Check if the selected category is already in the array, remove it if it is, add it if not
+            if (!prevSelectedCategoryIds.includes(id)) {
+              return [...prevSelectedCategoryIds, id];
+            } else {
+              return prevSelectedCategoryIds.filter(
+                (categoryId) => categoryId !== id
+              );
+            }
+          });
+        }}
+        onSearchArticle={(title) => {
+          setSearchedArticles(title);
         }}
       />
       <ArticleGrid

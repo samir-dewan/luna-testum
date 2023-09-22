@@ -1,4 +1,5 @@
-import { Article } from "../../types";
+import { Article, ListContent } from "../../types";
+import Button from "../utils/Button/Button";
 import "./ArticleDisplay.css";
 
 interface IArticleDisplay {
@@ -7,6 +8,30 @@ interface IArticleDisplay {
 }
 
 export function ArticleDisplay({ article, onHideArticle }: IArticleDisplay) {
+  function getTextFromList(item: ListContent): JSX.Element[] | JSX.Element {
+    if (item.type === "paragraph") {
+      return item.content.map(({ text, type }, index) => (
+        <span
+          key={index}
+          style={{
+            fontWeight: type === "bold-text" ? "bold" : "inherit",
+          }}
+        >
+          {text}
+        </span>
+      ));
+    } else {
+      return (
+        <span
+          style={{
+            fontWeight: item.type === "bold-text" ? "bold" : "inherit",
+          }}
+        >
+          {item.text}
+        </span>
+      );
+    }
+  }
   return (
     <div className="ArticleDisplay" data-testid="ArticleDisplay">
       <div className="ArticleContainer">
@@ -31,17 +56,34 @@ export function ArticleDisplay({ article, onHideArticle }: IArticleDisplay) {
                   })}
                 </div>
               );
-            } else if (type === "bullet-list" || type === "ordered-list") {
-              /* TODO: implement lists display */
+            } else if (type === "bullet-list") {
               return (
-                <div key={index} className="ArticleContentList">
-                  LIST CONTENT NEEDS TO APPEAR HERE
-                </div>
+                <ul key={index} className="ArticleContentList">
+                  {content.map((item, i) => {
+                    return (
+                      <li key={i} className="ArticleContentListItem">
+                        {getTextFromList(item)}
+                      </li>
+                    );
+                  })}
+                </ul>
+              );
+            } else if (type === "ordered-list") {
+              return (
+                <ol key={index} className="ArticleContentList">
+                  {content.map((item, i) => {
+                    return (
+                      <li key={i} className="ArticleContentListItem">
+                        {getTextFromList(item)}
+                      </li>
+                    );
+                  })}
+                </ol>
               );
             }
           })}
         </div>
-        <button onClick={onHideArticle}>Close</button>
+        <Button text="close" onClick={onHideArticle} uppercase={true} additionalClass="ArticleButton"/>
       </div>
     </div>
   );
