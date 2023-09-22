@@ -36,6 +36,8 @@ There are a couple of features that I want to action off the back of this task, 
 
 3 - Make multiple Category buttons clickable - right now, you can only select one Category to filter down on. It would make more sense, particularly as the number of articles increase, to have multiple Category buttons and therefore filters applicable by the user.
 
+POST-ATTEMPT: I've improved the Category filter buttons and section to wrap around, making the buttons smaller in padding but also becoming more interactive. On click, the buttons now show a tick next to them and become darker, and on hover, they grow larger. On mobile they take up a lot of space - if I had more time, I would conditionally render a dropdown box with the filters and only show the filters that were active on mobile breakpoints.
+
 ```
 
 ## Task 2 - Test Coverage 🤓
@@ -55,6 +57,8 @@ I managed to get the current suite of features up to a 93% coverage, mainly by a
 
 2 - Ensure that tests do not look at specific outcomes, but the outcome is correctly based on the input. For example, it shouldn't be that I test for a specific article name (say, "Test Article 1") to open up a specific article description (say, "Test Description 1"). Instead, I will make sure every test script will take a set input and will expect the correct set outcome. In a completely ideal world, I'd take a random seed of the data for testing; that way we would know that what I get as an outcome of my testing is expected for any input.
 
+POST-ATTEMPT: I added a search function test, which worked perfectly by highlighting my search function hadn't worked post-updated to task 1! That has now been updated. I've added some non-specific strings to add some end to end element to the testing scripts - in an ideal world, we would break down the scope of these scripts further to ensure that we know precisely which block of our codebase we are testing, but for now these show a 96% test coverage.
+
 ```
 
 ## Task 3 - Article List Content 📜
@@ -66,7 +70,7 @@ Can you finish off the implementation by ensuring that list content is displayed
 ```
 I managed to create a function that would take all the text out of the data.json file and display it as it's meant to be, depending on whether it's a bulleted list or an ordered list. Annoyingly (to me), I've had to make an if statement that just checks if it's a bulleted list or an ordered list; there has to be a cleaner way of writing the code than I have!
 
-1 - Low priority, but find a cleaner way of coding this function for bulleted and ordered-lists.
+1 - Low priority, but find a cleaner way of coding this function for bulleted and ordered-lists. Haven't been able to look at this!
 
 ```
 
@@ -92,6 +96,8 @@ Off this, I think that the "View" CTA shouldn't be the only place by which you c
 
 2 - Remove the "View" CTA at mobile breakpoint, leaving the card as clickable to open the 'ArticleDisplay'.
 
+POST-ATTEMPT: Both of these have been done. I left the "View" CTA within non-mobile breakpoints, even though the whole Article card would be clickable, as I feel it adds to the UX at those breakpoints, whereas to mobile users who are more used to clicking on things as part of design, having no "View" CTA would not be an issue design-wise.
+
 
 ```
 
@@ -115,6 +121,10 @@ The one thing I would like to add is a dark mode for easier readability. A hesit
 
 2 - Hover and click animations should be all in darker and lighter colours, so that it can be read by colour blind people.
 
+POST-ATTEMPT: I tried to use darkmode-js to add a dark mode to the application, but it wouldn't work properly and got rid of some of the colour palette within the App when not in dark mode. I've kept dark mode out of the app for now, sadly, but would work on it given more time.
+
+Hover animations now are in darker and lighter colours so can be read, also categories grow in size when hovered, to add visual response even if you are colour blind.
+
 ```
 
 ## Task 7 - New Search Feature 🔎
@@ -132,11 +142,16 @@ I want to improve on this Search feature in a few ways:
 
 2 - Make the Search function also look at article descriptions and even the Article text contents through and through. This would likely be something I would want to check with the user requirements with in a real-life scenario, but let's make the fullest functionality and then drill easier!
 
+POST-ATTEMPT: I made the Search function to live update depending on the text, and did not like how much it would move around the articles, so changed it back (updated the styles of the Search bar). I included article descriptions in the searchbar function, but kept Article text contents out, as from a user perspective it isn't clear as to why those articles stay available within the search (whereas article subtitles do appear).
+
 ```
 
 ## Bonus Task - Make the app "Pop" ❤️
 
 As our newest team member, seeing the (albeit rudimentary) **luna** web app with fresh eyes for the first time is a moment that we like to capitalise on! Can you comment on the UX of our web app, and implement some changes that you think would **delight and surprise** our users.
+
+```
+I've added a set of animations to the CTA buttons, Article sections and Category filters. On clicking Category filters also, rather than them going white, I've made them go to a darker colour than they were for some colour consistency. Hopefully the app looks good enough to delight and surprise our users now!
 
 ```
 
