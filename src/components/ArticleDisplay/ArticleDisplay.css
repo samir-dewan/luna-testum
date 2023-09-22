@@ -43,8 +43,9 @@
   margin-bottom: 0.25rem;
 }
 
-.ArticleDisplay button {
+.ArticleButton {
   background: #e68e86;
+  max-width: 100%;
   color: white;
   border: none;
   padding: 0.6rem;

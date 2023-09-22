@@ -83,7 +83,7 @@ export function ArticleDisplay({ article, onHideArticle }: IArticleDisplay) {
             }
           })}
         </div>
-        <Button text="close" onClick={onHideArticle} uppercase={true} />
+        <Button text="close" onClick={onHideArticle} uppercase={true} additionalClass="ArticleButton"/>
       </div>
     </div>
   );
