@@ -1,17 +1,25 @@
+.ArticleFilters {
+  padding: 0 3rem;
+}
+
+.SearchBarContainer {
+  width: 100%;
+}
+
 .CategorySelector {
   display: flex;
   justify-content: center;
   align-content: space-around;
   flex-wrap: wrap;
   column-gap: 1.5rem;
-  padding: 1rem 2rem;
+  padding: 1rem;
 }
 
 .CategoryOption {
   background-color: white;
   margin: 0.5rem;
-  border-radius: 0.5rem;
-  padding: 0.75rem;
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.75rem;
   flex-shrink: 0;
   cursor: pointer;
   border: none;

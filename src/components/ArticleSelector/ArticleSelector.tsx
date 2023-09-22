@@ -27,10 +27,7 @@ export function ArticleSelector({
   };
 
   return (
-    <section>
-      <div className="SearchBarContainer" data-testid="SearchBarContainer">
-        <SearchBar onSearch={handleSearch} />
-      </div>
+    <section className="ArticleFilters" data-testid="ArticleFilters">
       <div className="CategorySelector" data-testid="CategorySelector">
         {sortedCategories.map(({ id, title, color }) => {
           const isSelected = selectedCategoryIds?.includes(id);
@@ -45,16 +42,16 @@ export function ArticleSelector({
               <path
                 d="M7.29417 12.9577L10.5048 16.1681L17.6729 9"
                 stroke="#000000"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
               <circle
                 cx="12"
                 cy="12"
                 r="10"
                 stroke="#000000"
-                stroke-width="2"
+                strokeWidth="2"
               />
             </svg>
           ) : (
@@ -78,6 +75,9 @@ export function ArticleSelector({
             </button>
           );
         })}
+      </div>
+      <div className="SearchBarContainer" data-testid="SearchBarContainer">
+        <SearchBar onSearch={handleSearch} />
       </div>
     </section>
   );
